@@ -25,16 +25,14 @@ python3 app/app.py
 ```
 
 
-## Docker Deploy
+## Docker Deploy via Compose
+Example`docker-compose.yaml` is provided.
 
-Build the image with Docker
-
-```
-docker build -t plex-audioscrobble-webhook .
-```
-
-Run image
-
-```
-docker run -p 8000:5000 --name plex-audio-webhook -d plex-audioscrobble-webhook
-```
+## Setup for Plex and Maloja
+Assuming you have Plex and Maloja running:
+1. Log into Maloja admin and navigate to API Keys (/admin_apikeys)
+2. Create new API Key and copy it
+3. Update the `docker-compose.yaml` to set SCROBBLE_URL to `[maloja url]/apis/mlj_1/newscrobble` (e.g. `http://localhost:42010/apis/mlj_1/newscrobble`)
+4. Update the `docker-compose.yaml` to set SCROBBLE_API_KEY to your new API Key you created in Maloja
+5. Deploy docker
+6. Add new Plex webhook at `[plex server url]/web/index.html#!/settings/webhooks` pointing to `[plex-audioscrobble-webhook url]:42011`

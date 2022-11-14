@@ -1,13 +1,12 @@
-FROM ubuntu 
+# syntax=docker/dockerfile:1
+FROM python:3.11-slim-buster
 
-RUN apt-get update 
-RUN apt-get install python3-pip -y
-RUN pip3 install flask
+ADD ./requirements.txt .
+RUN pip3 install -r requirements.txt
 
 COPY ./app/ /app/
 WORKDIR /app/
 
 EXPOSE 5000
 
-ENTRYPOINT ["python3.10"]
-CMD ["app.py"]
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
