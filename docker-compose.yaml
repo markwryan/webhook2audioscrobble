@@ -1,0 +1,11 @@
+version: "1.0"
+services:
+  paw:
+    image: markwryan/plex-audioscrobble-webhook:latest
+    container_name: plex-audioscrobble-webhook
+    environment:
+      - SCROBBLE_URL=
+      - SCROBBLE_API_KEY=
+    ports:
+      - 42011:5000
+    restart: unless-stopped
