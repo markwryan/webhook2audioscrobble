@@ -1,4 +1,4 @@
-# plex-audioscrobble-webhook
+# webhook2audioscrobble
 
 Use Plex webhook to forward to a audioscrobble service, specifically a self-hosted instance of [Maloja](https://github.com/krateng/maloja).
 
